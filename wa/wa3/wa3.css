@@ -3,9 +3,8 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: white; /* Changed to white */
+    background-color: white; 
 }
-
 
 header {
     background: #f0f0f0;
@@ -21,9 +20,10 @@ h1 {
 nav {
     background: #e0e0e0;
     padding: 10px;
-    text-align: left; /* Align text to the left */
-    width: 200px; /* Fixed width for sidebar */
-    float: left; /* Float to the left */
+    text-align: left; 
+    width: 200px; 
+    float: left; 
+    height: 100%; 
 }
 
 nav h2 {
@@ -37,17 +37,15 @@ nav ul {
 
 nav ul li {
     margin: 5px 0;
-    position: relative; /* Position relative for dropdown */
 }
 
 nav ul li ul {
-    display: none; /* Hide dropdown by default */
-    position: absolute; /* Position dropdown */
-    left: 100%; /* Align to the right of the parent */
-    top: 0; /* Align to the top */
-    background: #f0f0f0; /* Background color for dropdown */
-    padding: 10px; /* Padding for dropdown */
-    z-index: 1000; /* Ensure dropdown is above other elements */
+    display: none; 
+    left: 100%; 
+    top: 0; 
+    background: #f0f0f0; 
+    padding: 10px; 
+    z-index: 1000;
 }
 
 nav ul li:hover ul {
@@ -58,25 +56,20 @@ nav ul li ul li {
     margin: 0; 
 }
 
-main, header, nav, article, aside, footer, section {
-    background-color:  #f0f0f0;
-    padding: 1%;
-}
-
 main {
     padding: 20px;
     margin-left: 220px; 
+    text-align: center; 
 }
 
 section {
     margin-bottom: 20px;
 }
 
-
 h2 {
     font-size: 2.2rem;
     margin-top: 0;
-    border-bottom: 1px solid #000; /* Added bottom border */
+    border-bottom: 1px solid #000; 
 }
 
 h3 {
@@ -84,18 +77,18 @@ h3 {
 }
 
 aside {
-    flex: 1;
-    margin-left: 10px;
+    float: right; 
+    width: 30%; 
+    margin-right: 10px;
     padding: 1%;
-  }
-  
-  aside a {
+}
+
+aside a {
     display: block;
-    float: left;
+    float: right;
     width: 50%;
-  }
-  
-  aside img {
+}
+
+aside img {
     max-width: 100%;
-  }
-  
+}
