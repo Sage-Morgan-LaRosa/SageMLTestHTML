@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Changed to white */
+}
+
+
+header {
+    background: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+nav {
+    background: #e0e0e0;
+    padding: 10px;
+    text-align: left; /* Align text to the left */
+    width: 200px; /* Fixed width for sidebar */
+    float: left; /* Float to the left */
+}
+
+nav h2 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 5px 0;
+    position: relative; /* Position relative for dropdown */
+}
+
+nav ul li ul {
+    display: none; /* Hide dropdown by default */
+    position: absolute; /* Position dropdown */
+    left: 100%; /* Align to the right of the parent */
+    top: 0; /* Align to the top */
+    background: #f0f0f0; /* Background color for dropdown */
+    padding: 10px; /* Padding for dropdown */
+    z-index: 1000; /* Ensure dropdown is above other elements */
+}
+
+nav ul li:hover ul {
+    display: block; 
+}
+
+nav ul li ul li {
+    margin: 0; 
+}
+
+main, header, nav, article, aside, footer, section {
+    background-color:  #f0f0f0;
+    padding: 1%;
+}
+
+main {
+    padding: 20px;
+    margin-left: 220px; 
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+
+h2 {
+    font-size: 2.2rem;
+    margin-top: 0;
+    border-bottom: 1px solid #000; /* Added bottom border */
+}
+
+h3 {
+    font-size: 1.8em;
+}
