@@ -6,7 +6,7 @@ body {
 html {
     font-family: 'Helvetica neue', Arial, 'sans serif';
     background-color: #ccc;
-    font-size: 10px; /* Base font size */
+    font-size: 10px; 
 }
 
 /*Card Container styles*/
@@ -31,24 +31,24 @@ html {
 }
 
 .card header, .card footer {
-    height: 5em; /* Total height of 50px expressed in ems */
-    padding: 1em; /* Padding of 10px expressed in ems */
-    box-sizing: border-box; /* Ensures padding is included in the total height */
+    height: 5em; 
+    padding: 1em; 
+    box-sizing: border-box; 
 }
 
 /*Main Business Content styles*/
 .card article img {
     max-height: 100%;
     float: right;
-    height: 12em; /* 120px expressed in ems */
-    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    height: 12em; 
+    background-color: rgba(0, 0, 0, 0.5); 
 }
 
 .card article {
-    color: #f0f0f0; /* lighter color for readability */
-    padding-left: 1em; /* adjusted padding for alignment */
-    height: 12em; /* 120px expressed in ems */
-    line-height: 1.5em; /* Increased line height for more spacing */
+    color: #f0f0f0; 
+    padding-left: 1em; 
+    height: 12em; 
+    line-height: 1.5em; 
 }
 
  
@@ -59,11 +59,55 @@ h2, p {
 }
 
 h2{
-    font-size: 2em; /* 20px expressed in ems */
-    line-height: 1.5em; /* Content height of 30px expressed in ems */
+    font-size: 2em; 
+    line-height: 1.5em; 
 }
 
 footer p{
-    font-size: 1.5em; /* 20px expressed in ems */
-    line-height: 1.5em; /* Content height of 30px expressed in ems */
+    font-size: 1.5em; 
+    line-height: 1.5em; 
+}
+
+
+
+/*sages card styles*/
+.sage_card {
+    width: 35em;
+    height: 22em;
+    margin: 5em auto;
+    background-color: rgb(0, 110, 0);
+    border: 0.2em solid black;
+    border-radius: 1.5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/*Header & footer styles*/
+.sage_card header {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    border-radius: 0 0 1.5em 1.5em;
+}
+
+.sage_card footer {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    border-radius: 1.5em 1.5em 0 0;
+}
+
+.sage_card header, .card footer {
+    height: 5em;
+    padding: 1em; 
+    box-sizing: border-box; 
+}
+
+/*Main Business Content styles*/
+.sage_card article img {
+    max-height: 100%;
+    float: right;
+    height: 12em; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.sage_card article {
+    color: #f0f0f0; 
+    padding-left: 1em;
+    height: 12em; 
+    line-height: 1.5em; 
 }
