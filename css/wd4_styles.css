@@ -34,10 +34,16 @@ img {
   overflow: hidden;
   aspect-ratio: 3 / 4;
   width: clamp(260px, 50vmin, 320px);
-  border-radius: 8px;
   transform-style: preserve-3d;
   touch-action: none;
   transition: transform 0.2s;
+  /*added card styles from wa4*/
+  width: 35em;
+  height: 22em;
+  margin: 5em auto;
+  background-color: rgba(9, 92, 6, 0.589);
+  border: 0.2em solid black;
+  border-radius: 1.5em;
 }
 
 .card[data-active="true"][data-parallax="true"] {
@@ -90,6 +96,19 @@ img {
     calc(80% + (var(--ratio-x) * -50%)) calc(80% + (var(--ratio-y) * -50%));
   opacity: 1;
 }
+
+/*card sepfic styles from wa4*/
+
+/*Header styles*/
+.card header {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(8, 255, 28));
+  border-radius: 0 0 0.5em 0.5em;
+  height: 5em;
+  box-sizing: border-box; 
+}
+
+
+/*I wanted to see if I could pulg in the whole busyis card and makr it shint*/
 
 html {
   color-scheme: dark only;
