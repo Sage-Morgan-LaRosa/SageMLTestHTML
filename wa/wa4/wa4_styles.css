@@ -82,13 +82,13 @@ footer p{
 }
 /*Header & footer styles*/
 .sage_card header {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-    border-radius: 0 0 1.5em 1.5em;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(8, 255, 28));
+    border-radius: 0 0 0.5em 0.5em;
 }
 
 .sage_card footer {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-    border-radius: 1.5em 1.5em 0 0;
+    background-image: linear-gradient(to bottom, rgb(0, 255, 0), rgba(0, 0, 0, 0));
+    border-radius: 0.5em 0.5em 0 0;
 }
 
 .sage_card header, .card footer {
