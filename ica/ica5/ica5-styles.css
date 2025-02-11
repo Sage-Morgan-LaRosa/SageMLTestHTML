@@ -9,6 +9,7 @@
   body {
     margin: 0;
     background: #ccc;
+
   }
   
   article {
@@ -22,6 +23,8 @@
     position: absolute;
     bottom: 8mm;
     right: 20mm;
+    background-image: url(bottom-image.png);
+    background-position: bottom;
   }
   
   h1 {
@@ -37,4 +40,15 @@
     color: white;
     text-shadow: 1px 1px 1px black;
   }
-  
+
+  /* Add your CSS here */
+
+  article{
+    border-top: 1mm solid red;
+    border-bottom: 1mm solid red;
+    background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0) 20%), url(top-image.png) no-repeat left top,
+    url(bottom-image.png) no-repeat left bottom;
+    background-color: white;
+    background-image: 
+
+  }
