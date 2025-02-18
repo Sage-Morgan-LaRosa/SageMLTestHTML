@@ -1,3 +1,4 @@
+/*General page styles*/
 * {
     box-sizing: border-box;
 }
@@ -15,6 +16,8 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+/*score box styles*/
 
 .scoreboxL {
     position: fixed;
@@ -103,6 +106,7 @@ body {
     margin: 0 0.625em;
 }
 
+/* timer box styles*/
 .timer-box {
     position: fixed;
     top: 1.25em;
