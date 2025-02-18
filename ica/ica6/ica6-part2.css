@@ -5,27 +5,31 @@ body{
 
 #flex-parent{
     background-color: orangered;
+    display: flex;
+    flex-direction: row;
 }
 #flex-parent p{
     padding:5vw;
 }
 
 #flex-child1{
-     
+order: 3;     
 }
 #flex-child2{
- 
+order: 4;
 }
 #flex-child3{
- 
+order: 2;
 }
 #flex-child4{
- 
+order: 1;
 }
 
 
 #grid-parent{
-
+display:grid;
+grid-template-columns: 0.5fr 0.5fr 0.5fr;
+grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
 }
 
 #grid-parent h1{
@@ -35,7 +39,8 @@ body{
     
 }
 #no0{
-    
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
 #no1{
 
