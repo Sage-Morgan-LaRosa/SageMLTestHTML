@@ -28,8 +28,8 @@ order: 1;
 
 #grid-parent{
 display:grid;
-grid-template-columns: 0.5fr 0.5fr 0.5fr;
-grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 #grid-parent h1{
