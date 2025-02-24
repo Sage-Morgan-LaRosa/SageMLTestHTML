@@ -7,11 +7,11 @@ body{
     flex-direction: column;
     flex-wrap: wrap;
     gap: 2em;
-    background: #f6f8fe;
+    background: #8b8b8bd5;
   }
   
   [type="range"].kawaii {
-    --base: #fe8ce4;
+    --base: #019727;
     --light: color-mix(in sRGB, var(--base) 60%, #fff);
     --lighter: color-mix(in sRGB, var(--base) 30%, #fff);
     --dark: color-mix(in sRGB, var(--base) 95%, #000);;
