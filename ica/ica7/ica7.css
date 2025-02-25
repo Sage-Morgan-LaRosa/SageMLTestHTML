@@ -13,17 +13,23 @@ body{
     height:20vh;
     position: relative;
     background-color: orangered;
+    animation-name: box2move;
+    animation-duration: 8s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
 }
 
 @keyframes box2move{
-from{
-    width: 25vw;
-    height:20vh;
+0%{
+    translate: -50vw 0;
 }
 
-to{
-    width: 25vw;
-    height:20vh;
+25%{
+    translate: 80vw 0;
+}
+
+100%{
+    translate: 0 0;
 }
 }
 
