@@ -6,8 +6,6 @@ body{
     height: 20vh;
     background-color: indianred;
     transition:
-    width 2s,
-    height 2s,
     background-color 2s,
     rotate 2s;
 }
