@@ -24,7 +24,7 @@ nav a {
 
 img {
     width: 30vw;
-    height: 30vh;
+    height: 100vh;
     border: 5px solid white; /* Added border */
 }
 
@@ -42,14 +42,13 @@ img {
     animation-iteration-count: infinite;
 }
 
-@keyframes red-balMove {
+@keyframes red-balMove{
     0% {
-        translate: -50vw 50vh;
+        translate: 10vw 50vh;
     }
     
     25% {
         translate: 80vw 80vh;
-        size: adjust 50px;
     }
     
     50% {
@@ -68,5 +67,4 @@ img {
 a:hover {
     color: white;
     text-decoration: underline;
-    text-size-adjust: 10px;
 }
