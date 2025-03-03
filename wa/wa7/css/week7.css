@@ -1,70 +1,72 @@
-body{
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: darkblue;
 }
-nav{
+
+nav {
     height: 50vh;
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height:20px;
+    height: 20px;
     background-color: darkred;
 }
-nav a{
-    width:10vw;
+
+nav a {
+    width: 10vw;
     text-align: center;
     text-decoration: none;
-    color:darkblue;
+    color: darkblue;
     transition: all 0.5s ease-out;
 }
 
-
-img{
-    width:30vw;
+img {
+    width: 30vw;
     height: 30vh;
+    border: 5px solid white; /* Added border */
 }
 
-#red-ball{
+#red-ball {
     background-color: crimson;
     width: 20px;
-    height:20px;
+    height: 20px;
     border-radius: 50%;
     position: absolute;
-    left:5vw;
-    top:0;
+    left: 5vw;
+    top: 0;
     animation-name: red-balMove;
     animation-duration: 8s;
     animation-direction: alternate;
     animation-iteration-count: infinite;
 }
 
-@keyframes red-balMove{ 
-    0%{
+@keyframes red-balMove {
+    0% {
         translate: -50vw 50vh;
     }
     
-    25%{
+    25% {
         translate: 80vw 80vh;
         size: adjust 50px;
     }
     
-    50%{
+    50% {
         translate: 120vw 110vh;
     }
     
-    75%{
+    75% {
         translate: 170vw 180vh;
     }
 
-    100%{
+    100% {
         translate: 0 0;
     }
-    }
+}
 
-    a:hover{
-       color: white;
-       text-decoration: underline;
-       text-size-adjust:10px;
-    }
+a:hover {
+    color: white;
+    text-decoration: underline;
+    text-size-adjust: 10px;
+}
