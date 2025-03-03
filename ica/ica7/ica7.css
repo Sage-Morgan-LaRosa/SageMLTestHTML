@@ -38,6 +38,6 @@ body{
 }
 
 #box1:hover{
-    background-color: purple;
+    background-color:lightskyblue;
     rotate: 25deg;
 }
