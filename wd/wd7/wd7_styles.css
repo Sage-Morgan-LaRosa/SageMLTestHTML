@@ -21,6 +21,7 @@ body {
 	grid-template-rows: repeat(3, 1fr);
 	--x: 0;
 	--y: 0;
+	color:aqua;
 }
 
 div:has(svg) {
