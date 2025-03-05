@@ -2,12 +2,10 @@
     display: flex;  
     flex-flow: column wrap;
     font-weight: bold;
-    text-align: center; 
-    align-content: stretch;
   }
   
   .wrapper > * {
-    padding: 10px;
+    padding: 5px;
     flex: 1 100%;
   }
   
