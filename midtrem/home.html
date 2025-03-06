@@ -7,9 +7,23 @@
   <link rel="stylesheet" href="mid-styles.css">
 </head>
 <body>
+
   <div class="header">
   <h2>Blog Name</h2>
+  </div>
+
+  
+<div id="mySidepanel" class="sidepanel">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
 </div>
+
+<button class="openbtn" onclick="openNav()">☰ Toggle Sidepanel</button> 
+
+
 
 <div class="row">
   <div class="contentcolumn">
@@ -30,9 +44,20 @@
   </div>
 </div>
 
+
 <div class="footer">
   <h2>Footer</h2>
 </div>
 
+<script>
+  function openNav() {
+    document.getElementById("mySidepanel").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidepanel").style.width = "0";
+  }
+  </script>
+  
 </body>
 </html>
