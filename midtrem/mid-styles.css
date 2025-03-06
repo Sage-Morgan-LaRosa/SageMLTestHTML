@@ -36,6 +36,8 @@ body {
    background-color: white;
    padding: 20px;
    margin-top: 20px;
+   border-style: solid;
+   border-width: 5px;
 }
 
 /* Clear floats after the columns */
