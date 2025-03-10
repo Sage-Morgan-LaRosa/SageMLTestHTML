@@ -7,3 +7,6 @@ function closeNav() {
   document.getElementById("mySidepanel").style.width = "0";
   document.getElementById("mySidepanel").style.height = "0";
 }
+
+
+window.onload = closeNav();
