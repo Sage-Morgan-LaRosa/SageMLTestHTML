@@ -15,27 +15,23 @@ body {
   padding: 30px;
   font-size: 40px;
   text-align: center;
-  background: white;
+  color: white;
   background-image: url(imgs/Mars.gif);
   background-size:cover;
   background-position: center;
 }
 
-/* Create two unequal columns that floats next to each other */
-/* Left column */
+h2 {
+  text-decoration: underline;
+}
+
+/* column */
 .contentColumn {   
   float: left;
   width: 100%;
 }
 
-/* Fake image */
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
-}
-
-/* Add a card effect for articles */
+/* Add a card effect */
 .card {
    background: linear-gradient(#930000, #0161a1, #400051);
    padding: 20px;
@@ -61,6 +57,34 @@ body {
   margin-top: 20px;
 }
 
+/* Click to GIF styles */
+.click-to-gif img {
+    display: block;
+}
+
+.click-to-gif input[type=checkbox] {
+    position: absolute;
+    left: -100vw; /* Hide checkbox off-screen */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    label.click-to-gif {
+        display: block;
+        float: left;
+        background: DimGrey no-repeat center center;
+        background-image: url('data:image/svg+xml;...fill="LightGrey"/>');
+    }
+    .click-to-gif:hover, .click-to-gif:focus-within {
+        background: DarkSlateGrey no-repeat center center;
+        background-image: url('data:image/svg+xml;...fill="MediumSeaGreen"/></svg>');
+    }
+    .click-to-gif input[type=checkbox] + img {
+        opacity: 0; /* Hide image by default */
+    }
+    .click-to-gif input[type=checkbox]:checked + img {
+        opacity: 1; /* Show image when checkbox is checked */
+    }
+}
 
 
 /* SideBar Css Code */
@@ -130,4 +154,34 @@ h2 {
     width: 100%;
     padding: 0;
   }
+}
+
+
+/* New styles for button and GIF */
+.click-to-gif img {display: block;}
+.click-to-gif input[type=checkbox] {
+  position: absolute;
+  left: -100vw;
+}
+ 
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+.click-to-gif input[type=checkbox] {
+  position: absolute;
+  left: -100vw; /* Hide checkbox off-screen */
+}
+
+.click-to-gif input[type=checkbox]:checked + img {
+  animation: fadeIn 10s forwards; /* Play animation when checked */
+}
+
+.click-to-gif input[type=checkbox]:checked + img + audio {
+  display: block; /* Show audio element */
 }

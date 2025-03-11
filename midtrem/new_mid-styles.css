@@ -1,0 +1,5 @@
+#gifContainer {
+    margin-top: 20px;
+    z-index: 10; /* Ensure GIF is in front */
+    position: relative; /* Required for z-index to take effect */
+}
