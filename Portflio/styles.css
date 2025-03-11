@@ -1,103 +1,69 @@
-body {
-    margin: 0;
-    background-color: #f0f0f0; /* Light Gray */
-}
-
-
-.navbar {
-    background-color: black;
-    color: white;
-    padding: 1em;
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Add a gray background color with some padding */
+  body {
+    font-family: Arial;
+    padding: 20px;
+    background: #f1f1f1;
+  }
+  
+  /* Header/Blog Title */
+  .header {
+    padding: 30px;
+    font-size: 40px;
     text-align: center;
-}
-
-.navbar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.navbar ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-}
-
-.navbar a:hover {
-    text-decoration: underline; /* Add underline on hover */
-}
-
-
-.hero {
-    background-image: url('images/hero-image.jpg'); /* Placeholder for hero image */
-
-    background-size: cover;
-    color: white;
-    text-align: center;
-    padding: 50px 0;
-}
-
-.gallery-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center the gallery items */
-    margin-top: 20px; /* Add margin for spacing */
-}
-
-
-.photo-wrapper {
-    margin: 15px; /* Increase margin for better spacing */
-    text-align: center;
-}
-
-
-.photo-caption {
-    margin-top: 5px;
-}
-
-
-.title-bar {
+    background: white;
+  }
+  
+  /* Create two unequal columns that floats next to each other */
+  /* Left column */
+  .leftcolumn {   
+    float: left;
+    width: 75%;
+  }
+  
+  /* Right column */
+  .rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+  }
+  
+  /* Fake image */
+  .fakeimg {
+    background-color: #aaa;
     width: 100%;
-    background-color: black;
-    color: white;
+    padding: 20px;
+  }
+  
+  /* Add a card effect for articles */
+  .card {
+     background-color: white;
+     padding: 20px;
+     margin-top: 20px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 20px;
     text-align: center;
-    padding: 20px 0;
-    position: fixed; /* Fixes the title bar at the top */
-    top: 0; /* Aligns it to the top */
-    left: 0; /* Aligns it to the left */
-    z-index: 1000; /* Ensures it stays above other content */
-    margin-bottom: 20px; /* Ensure space below the title bar */
-}
-
-
-.title-bar h1 {
-    margin: 0;
-    font-size: 2.5em; /* Adjust the size as needed */
-}
-
-.gallery-container {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow wrapping of items */
-    justify-content: space-around; /* Evenly spread items */
-    margin-top: 120px; /* Increased space below the title bar */
-}
-
-.photo-wrapper {
-    margin: 10px; /* Space between images */
-    position: relative; /* Allows absolute positioning of the caption */
-}
-
-img {
-    max-width: 220px; /* Set a specific max-width for the showcase */
-    height: auto;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-}
-
-.photo-caption {
-    text-align: center; /* Center the caption */
-    margin-top: 5px; /* Space above the caption */
-}
+    background: #ddd;
+    margin-top: 20px;
+  }
+  
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {   
+      width: 100%;
+      padding: 0;
+    }
+  }
