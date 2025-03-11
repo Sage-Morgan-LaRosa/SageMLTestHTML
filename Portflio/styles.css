@@ -1,69 +1,187 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Add a gray background color with some padding */
+body {
+    perspective: 100vmin;
   }
-  
-  /* Add a gray background color with some padding */
-  body {
-    font-family: Arial;
-    padding: 20px;
-    background: #f1f1f1;
-  }
-  
-  /* Header/Blog Title */
-  .header {
-    padding: 30px;
-    font-size: 40px;
-    text-align: center;
-    background: white;
-  }
-  
-  /* Create two unequal columns that floats next to each other */
-  /* Left column */
-  .leftcolumn {   
-    float: left;
-    width: 75%;
-  }
-  
-  /* Right column */
-  .rightcolumn {
-    float: left;
-    width: 25%;
-    padding-left: 20px;
-  }
-  
-  /* Fake image */
-  .fakeimg {
-    background-color: #aaa;
+
+/* Header/Blog Title */
+.header {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background: black;
+  width: 400px;
+  height: 200px;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+  padding-left: 5%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
     width: 100%;
-    padding: 20px;
+    padding: 0;
   }
-  
-  /* Add a card effect for articles */
-  .card {
-     background-color: white;
-     padding: 20px;
-     margin-top: 20px;
+}
+
+html {
+    color-scheme: dark only;
   }
+  @layer base {
+    :root {
+      --font-size-min: 16;
+      --font-size-max: 20;
+      --font-ratio-min: 1.2;
+      --font-ratio-max: 1.33;
+      --font-width-min: 375;
+      --font-width-max: 1500;
+    }
   
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+    html {
+      color-scheme: dark only;
+    }
   
-  /* Footer */
-  .footer {
-    padding: 20px;
-    text-align: center;
-    background: #ddd;
-    margin-top: 20px;
-  }
+    [data-theme='light'] {
+      color-scheme: light only;
+    }
   
-  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 800px) {
-    .leftcolumn, .rightcolumn {   
-      width: 100%;
+    [data-theme='dark'] {
+      color-scheme: dark only;
+    }
+  
+    :where(.fluid) {
+      --fluid-min: calc(
+        var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
+      );
+      --fluid-max: calc(
+        var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
+      );
+      --fluid-preferred: calc(
+        (var(--fluid-max) - var(--fluid-min)) /
+          (var(--font-width-max) - var(--font-width-min))
+      );
+      --fluid-type: clamp(
+        (var(--fluid-min) / 16) * 1rem,
+        ((var(--fluid-min) / 16) * 1rem) -
+          (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+          (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+        (var(--fluid-max) / 16) * 1rem
+      );
+      font-size: var(--fluid-type);
+    }
+  
+    *,
+    *:after,
+    *:before {
+      box-sizing: border-box;
+    }
+  
+    body {
+      background: light-dark(#fff, #000);
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
+        Helvetica, Arial, sans-serif, system-ui;
+    }
+  
+    body::before {
+      --size: 45px;
+      --line: color-mix(in hsl, canvasText, transparent 70%);
+      content: '';
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      background: linear-gradient(
+            90deg,
+            var(--line) 1px,
+            transparent 1px var(--size)
+          )
+          50% 50% / var(--size) var(--size),
+        linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
+          var(--size) var(--size);
+      mask: linear-gradient(-20deg, transparent 50%, white);
+      top: 0;
+      transform-style: flat;
+      pointer-events: none;
+      z-index: -1;
+    }
+  
+    .bear-link {
+      color: canvasText;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      width: 48px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      opacity: 0.8;
+    }
+  
+    :where(.x-link, .bear-link):is(:hover, :focus-visible) {
+      opacity: 1;
+    }
+  
+    .bear-link svg {
+      width: 75%;
+    }
+  
+    /* Utilities */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
       padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
     }
   }
