@@ -67,8 +67,8 @@ a {
 /* New box container for the bottom right corner of the card */
 .box-container {
    position: absolute; /* Position it absolutely within the card */
-   bottom: 10px; /* 10px from the bottom */
-   right: 10px; /* 10px from the right */
+   bottom: 0px; /* 10px from the bottom */
+   right: 0px; /* 10px from the right */
    width: 400px; /* Set a width for the box */
    height: 350px; /* Set a height for the box */
    padding: 5px; /* Padding inside the box */
