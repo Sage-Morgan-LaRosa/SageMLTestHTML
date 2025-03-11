@@ -6,11 +6,12 @@
 body {
   font-family: Arial;
   padding: 20px;
-  background-image: url(imgs/milky-way-starry-sky-night-sky-star-956981.jpeg);
+  background-image: url(imgs/free-photo-of-cygnus-constellation-of-the-milky-way.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-
-/* Header/Blog Title */
+/* Header */
 .header {
   padding: 30px;
   font-size: 40px;
@@ -21,8 +22,15 @@ body {
   background-position: center;
 }
 
-h2 {
-  text-decoration: underline;
+p,
+h2,
+h5 {
+  z-index: 10; /* Ensure text appears in front of the GIF */
+  position: relative;
+}
+
+a {
+  z-index: 1;
 }
 
 /* column */
@@ -33,6 +41,7 @@ h2 {
 
 /* Add a card effect */
 .card {
+   position: relative; /* Ensure the card is positioned for absolute children */
    background: linear-gradient(#930000, #0161a1, #400051);
    padding: 20px;
    margin-top: 20px;
@@ -40,6 +49,30 @@ h2 {
    border-width: 5px;
    border-color: black;
    color: white;
+   z-index: -1;
+   font-display: ;
+}
+
+.gif {
+   position: absolute; /* Position the GIF absolutely within the card */
+   top: 0; /* Align to the top */
+   left: 0; /* Align to the left */
+   width: 100%; /* Cover the entire card */
+   height: 100%; /* Cover the entire card */
+   z-index: 0; /* Place behind text elements */
+   background-size: cover; /* Ensure the GIF covers the area */
+   background-repeat: no-repeat; /* Prevent repeating */
+}
+
+/* New box container for the bottom right corner of the card */
+.box-container {
+   position: absolute; /* Position it absolutely within the card */
+   bottom: 10px; /* 10px from the bottom */
+   right: 10px; /* 10px from the right */
+   width: 400px; /* Set a width for the box */
+   height: 350px; /* Set a height for the box */
+   padding: 5px; /* Padding inside the box */
+   z-index: 1; /* Ensure it appears above the GIF */
 }
 
 /* Clear floats after the columns */
@@ -57,38 +90,7 @@ h2 {
   margin-top: 20px;
 }
 
-/* Click to GIF styles */
-.click-to-gif img {
-    display: block;
-}
-
-.click-to-gif input[type=checkbox] {
-    position: absolute;
-    left: -100vw; /* Hide checkbox off-screen */
-}
-
-@media (prefers-reduced-motion: reduce) {
-    label.click-to-gif {
-        display: block;
-        float: left;
-        background: DimGrey no-repeat center center;
-        background-image: url('data:image/svg+xml;...fill="LightGrey"/>');
-    }
-    .click-to-gif:hover, .click-to-gif:focus-within {
-        background: DarkSlateGrey no-repeat center center;
-        background-image: url('data:image/svg+xml;...fill="MediumSeaGreen"/></svg>');
-    }
-    .click-to-gif input[type=checkbox] + img {
-        opacity: 0; /* Hide image by default */
-    }
-    .click-to-gif input[type=checkbox]:checked + img {
-        opacity: 1; /* Show image when checkbox is checked */
-    }
-}
-
-
 /* SideBar Css Code */
-
 .sidepanel  {
   width: 0; /* Start hidden */
   height: 100%; /* Full height */
@@ -151,19 +153,16 @@ h2 {
 
 @media screen and (min-width: 400px) {
   .contentColumn {   
-    width: 100%;
+    width: 400%;
     padding: 0;
   }
 }
 
-
-/* New styles for button and GIF */
-.click-to-gif img {display: block;}
-.click-to-gif input[type=checkbox] {
-  position: absolute;
-  left: -100vw;
+.gif {
+  animation: fadeIn 10s;
+  position: relative bottom right;
 }
- 
+
 @keyframes fadeIn {
   0% {
       opacity: 0;
@@ -171,29 +170,4 @@ h2 {
   100% {
       opacity: 1;
   }
-}
-
-.click-to-gif input[type=checkbox] {
-  position: absolute;
-  left: -100vw; /* Hide checkbox off-screen */
-}
-
-.click-to-gif input[type=checkbox]:checked + img {
-  animation: fadeIn 10s forwards; /* Play animation when checked */
-}
-
-.click-to-gif input[type=checkbox]:checked + img + audio {
-  display: block; /* Show audio element */
-}
-
-.audio-player {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-audio {
-  width: 100%;
-  outline: none;
 }
