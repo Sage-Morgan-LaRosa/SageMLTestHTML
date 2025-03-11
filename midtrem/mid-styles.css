@@ -185,3 +185,15 @@ h2 {
 .click-to-gif input[type=checkbox]:checked + img + audio {
   display: block; /* Show audio element */
 }
+
+.audio-player {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+audio {
+  width: 100%;
+  outline: none;
+}
