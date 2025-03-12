@@ -50,7 +50,6 @@ a {
    border-color: black;
    color: white;
    z-index: -1;
-   font-display: ;
 }
 
 .gif {
@@ -158,16 +157,3 @@ h2 {
   }
 }
 
-.gif {
-  animation: fadeIn 10s;
-  position: relative bottom right;
-}
-
-@keyframes fadeIn {
-  0% {
-      opacity: 0;
-  }
-  100% {
-      opacity: 1;
-  }
-}
