@@ -54,6 +54,27 @@ h5 {
    border-color: black;
    color: white;
    z-index: -1;
+   display: flex; /* Use flexbox */
+   flex-wrap: wrap; /* Allow wrapping to create rows */
+   justify-content: space-between; /* Space out the columns */
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column; /* Arrange items in a column */
+  flex: 1; /* Allow it to grow and fill the space */
+}
+
+/* Style for each cell */
+.cell {
+  flex: 1 0 30%; /* Allow each cell to take up 30% of the width */
+  margin: 5px; /* Add some margin between cells */
+}
+
+/* Optional: Adjust the height of the cells */
+.cell h2, .cell h3, .cell h4, .cell p, .cell h5 {
+  margin: 0; /* Remove default margins */
+  padding: 10px; /* Add some padding */
 }
 
 .gif {
