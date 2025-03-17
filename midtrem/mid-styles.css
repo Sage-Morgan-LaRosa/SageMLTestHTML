@@ -2,36 +2,6 @@
   box-sizing: border-box;
 }
 
-.iceberg-regular {
-  font-family: "Iceberg", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.quantico-regular {
-  font-family: "Quantico", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.quantico-bold {
-  font-family: "Quantico", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.quantico-regular-italic {
-  font-family: "Quantico", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.quantico-bold-italic {
-  font-family: "Quantico", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
 body {
   font-family: "Quantico", sans-serif;
   font-weight: 400;
@@ -40,6 +10,7 @@ body {
   background-image: url(imgs/free-photo-of-cygnus-constellation-of-the-milky-way.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
+  z-index: 1;
 }
 
 .header {
@@ -128,7 +99,7 @@ p{
 .card-content {
   display: flex;
   flex-direction: column; /* Arrange items in a column */
-  flex: 1; /* Allow it to grow and fill the space */
+  flex: 3; /* Allow it to grow and fill the space */
 }
 
 /* Style for each cell */
@@ -166,7 +137,7 @@ p{
    width: 400px; 
    height: 350px;
    padding: 5px; 
-   z-index: 1; 
+   z-index: 2; 
 }
 
 
@@ -177,7 +148,7 @@ p{
   width: 400px; 
   height: 350px; 
   padding: 5px; 
-  z-index: 1; 
+  z-index: 2; 
 }
 
 
@@ -198,8 +169,11 @@ p{
 
 /* Navigation Bar Styles */
 nav {
-    background-color: #333; /* Dark background for the nav */
-    overflow: hidden; /* Clear floats */
+  background: linear-gradient( #0161a1, black, #0161a1);
+    overflow: hidden; 
+    position: relative; 
+    z-index: 10; 
+
 }
 
 nav ul {
@@ -208,7 +182,13 @@ nav ul {
     list-style-type: none; 
     margin: 0; 
     padding: 0; 
+    justify-content: space-around; /* Ensure even spacing */
 }
+
+nav ul li {
+    flex: 1 1 150px; /* Allow items to grow and shrink, with a minimum width */
+}
+
 
 nav ul li {
     float: left; 
@@ -225,18 +205,20 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color: #111; 
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
+
 
 .sidepanel  {
   width: 0; /* Start hidden */
   height: 100%; /* Full height */
-  position: sticky; /* Keep sticky position */
-  z-index: 1; /* On top of other content */
-  top: 0; /* Align to the top */
-  left: 0; /* Align to the left */
-  background-color: #111; /* Background color */
-  overflow-x: hidden; /* Hide horizontal overflow */
-  transition: 0.3s; /* Smooth transition */
+  position: sticky; 
+  z-index: 5; 
+  top: 0; 
+  left: 0; 
+  background-color: #111; 
+  overflow-x: hidden; 
+  transition: 0.3s; 
 }
 
 .sidepanel a {
@@ -268,6 +250,7 @@ nav ul li a:hover {
   border: none;
   position: sticky;
   top: 0;
+  z-index: 5;
 }
 
 .openbtn:hover {
@@ -314,7 +297,8 @@ nav ul li a:hover {
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 800px) { /* Adjust for smaller screens */
+
   .contentColumn {   
     width: 100%;
     padding: 0;
