@@ -7,9 +7,9 @@ body {
   font-weight: 400;
   font-style: normal;
   padding: 20px;
-  background-image: url(imgs/free-photo-of-cygnus-constellation-of-the-milky-way.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url(imgs/pexels-felixmittermeier-1146134.jpg);
+  background-size: contain;
+  background-repeat: repeat-y;
   z-index: 1;
 }
 
@@ -213,7 +213,6 @@ nav ul li a:hover {
   width: 0; /* Start hidden */
   height: 100%; /* Full height */
   position: sticky; /* Keep sticky position */
-  z-index: 1; /* On top of other content */
   top: 0; /* Align to the top */
   left: 0; /* Align to the left */
   background-color: #111; /* Background color */
@@ -222,8 +221,8 @@ nav ul li a:hover {
 }
 
 .sidepanel a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
+  padding: 8px 8px 20px 32px;
+  text-decoration: wavy;
   font-size: 15px;
   color: #818181;
   display: block;
@@ -250,7 +249,7 @@ nav ul li a:hover {
   border: none;
   position: sticky;
   top: 0;
-  z-index: 5;
+  z-index: 4;
 }
 
 .openbtn:hover {
@@ -296,41 +295,35 @@ nav ul li a:hover {
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 800px) { 
 
-  .contentColumn {   
-    width: 100%;
-    padding: 0;
-  }
-}
 
-@media screen and (min-width: 400px) {
-  .contentColumn {   
-    width: 100%;
-    padding: 0;
-  }
-  .card {
-      flex-direction: column;
-   }
-
-  .cell p{
+@media screen and (max-width: 400px) {
+  .cell p {
     font-size: 10px;
   }
-  h1{
+  h1 {
     font-size: 30px;
   }
-  h2{
+  h2 {
     font-size: 20px;
   }
-  h3, h4, h5{
+  h3, h4, h5 {
     font-size: 15px;
   }
   .box-containerR {
     width: 50%;
     height: 50%;
   }
-  .box-containerL{
+  .box-containerL {
     width: 50%;
     height: 50%;
-  } 
+  }
+  .card{
+    flex-direction: column;
+  }
 }
+
+
+
+
+/* Remove the max-width media query to keep styles unchanged for widths up to 1500px */

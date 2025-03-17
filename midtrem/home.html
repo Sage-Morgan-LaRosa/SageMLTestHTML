@@ -6,17 +6,17 @@
     <link rel="stylesheet" href="mid-styles.css">
     <title>Home</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Iceberg&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Iceberg&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <div class="header">
+  <div class="header" id="header">
     <h1>ZΩRBLAXian VOID PULSE COLLECTIVE</h1>
   </div>
 
@@ -75,21 +75,26 @@
     </ul>
   </nav>
 
+ <button class="openbtn"  onclick="openNav()">☰</button> 
+
   <div id="mySidepanel" class="sidepanel">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="#header"></a>
+    <a href="#header"></a>
+    <a href="#header" onclick="closeNav()"> Top</a>
     <a href="#card1" onclick="closeNav()"> CONCERT 1</a>
     <a href="#card2" onclick="closeNav()"> CONCERT 2</a>
     <a href="#card3" onclick="closeNav()"> CONCERT 3</a>
     <a href="#card4" onclick="closeNav()"> CONCERT 4</a>
     <a href="#card5" onclick="closeNav()"> CONCERT 5</a>
     <a href="#card6" onclick="closeNav()"> CONCERT 6</a>
-    <a href="#card7" onclick="closenav()"> CONCERT 7</a>
+    <a href="#card7" onclick="closeNav()"> CONCERT 7</a>
     <a href="#card8" onclick="closeNav()"> CONCERT 8</a>
     <a href="#card9" onclick="closeNav()"> CONCERT 9</a>
     <a href="#card10" onclick="closeNav()"> CONCERT 10</a>
   </div>
 
-  <button class="openbtn"  onclick="openNav()">☰</button> 
+ 
 
   <div class="row">
     <div class="contentcolumn" >
@@ -205,7 +210,8 @@
   </div>
 
   <div class="footer">
-    <h2>Footer</h2>
+    
+    <a href="#header"><h2><u>Back Top</u></h2></a>
   </div>
 
   <script src="mid-script.js"></script>
