@@ -171,9 +171,9 @@ p{
 nav {
   background: linear-gradient( #0161a1, black, #0161a1);
     overflow: hidden; 
-    position: relative; 
-    z-index: 10; 
-
+    position: relative; /* Ensure positioning for z-index */
+    z-index: 10; /* Move navbar to the front */
+  width : 100%;
 }
 
 nav ul {
@@ -212,13 +212,13 @@ nav ul li a:hover {
 .sidepanel  {
   width: 0; /* Start hidden */
   height: 100%; /* Full height */
-  position: sticky; 
-  z-index: 5; 
-  top: 0; 
-  left: 0; 
-  background-color: #111; 
-  overflow-x: hidden; 
-  transition: 0.3s; 
+  position: sticky; /* Keep sticky position */
+  z-index: 1; /* On top of other content */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  background-color: #111; /* Background color */
+  overflow-x: hidden; /* Hide horizontal overflow */
+  transition: 0.3s; /* Smooth transition */
 }
 
 .sidepanel a {
@@ -279,7 +279,6 @@ nav ul li a:hover {
   }
 }
 
-
 .new {
   opacity: 0;
   animation: glow 2s forwards;
@@ -297,7 +296,7 @@ nav ul li a:hover {
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 800px) { /* Adjust for smaller screens */
+@media screen and (max-width: 800px) { 
 
   .contentColumn {   
     width: 100%;
@@ -307,7 +306,31 @@ nav ul li a:hover {
 
 @media screen and (min-width: 400px) {
   .contentColumn {   
-    width: 400%;
+    width: 100%;
     padding: 0;
   }
+  .card {
+      flex-direction: column;
+   }
+
+  .cell p{
+    font-size: 10px;
+  }
+  h1{
+    font-size: 30px;
+  }
+  h2{
+    font-size: 20px;
+  }
+  h3, h4, h5{
+    font-size: 15px;
+  }
+  .box-containerR {
+    width: 50%;
+    height: 50%;
+  }
+  .box-containerL{
+    width: 50%;
+    height: 50%;
+  } 
 }
