@@ -2,16 +2,46 @@
   box-sizing: border-box;
 }
 
-/* Add a gray background color with some padding */
+.iceberg-regular {
+  font-family: "Iceberg", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.quantico-regular {
+  font-family: "Quantico", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.quantico-bold {
+  font-family: "Quantico", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.quantico-regular-italic {
+  font-family: "Quantico", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.quantico-bold-italic {
+  font-family: "Quantico", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
 body {
-  font-family: Arial;
+  font-family: "Quantico", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   padding: 20px;
   background-image: url(imgs/free-photo-of-cygnus-constellation-of-the-milky-way.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-/* Header */
 .header {
   padding: 30px;
   font-size: 40px;
@@ -20,6 +50,14 @@ body {
   background-image: url(imgs/Mars.gif);
   background-size:cover;
   background-position: center;
+
+}
+
+h1{
+   font-family: "Iceberg", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  animation: glowtitle  10s infinite;
 }
 
 p,
@@ -30,11 +68,39 @@ h5 {
   padding-left: 20px;
 }
 
+h5 {
+  font-size: 15px;
+  font-family: "Quantico", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+b{
+  animation: glow  4s infinite;
+  font-family: "Quantico", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  color: #0161a1;
+}
+
+h2{
+  animation: glow  3s infinite;
+  font-family: "Iceberg", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #0161a1;
+}
 .card p {
   font-size: 18px;
   padding-left: 20%;
   padding-right: 20%;
   padding-bottom: 5PX;
+}
+
+p{
+  font-family: "Quantico", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* column */
@@ -67,37 +133,53 @@ h5 {
 
 /* Style for each cell */
 .cell {
-  flex: 1 0 30%; /* Allow each cell to take up 30% of the width */
-  margin: 5px; /* Add some margin between cells */
+  flex: 1 0 30%; 
+  margin: 5px; 
 }
 
-/* Optional: Adjust the height of the cells */
-.cell h2, .cell h3, .cell h4, .cell p, .cell h5 {
-  margin: 0; /* Remove default margins */
-  padding: 10px; /* Add some padding */
+.cell p {
+  flex: 1 0 40%; 
+  margin: 5px; 
+}
+
+.cell h2, .cell h3, .cell h4, .cell h5 {
+  margin: 0; 
+  padding: 1%; 
 }
 
 .gif {
    position: absolute; /* Position the GIF absolutely within the card */
-   top: 0; /* Align to the top */
-   left: 0; /* Align to the left */
-   width: 100%; /* Cover the entire card */
-   height: 100%; /* Cover the entire card */
+   top: 0; 
+   left: 0; 
+   width: 100%; 
+   height: 100%; 
    z-index: 0; /* Place behind text elements */
-   background-size: cover; /* Ensure the GIF covers the area */
-   background-repeat: no-repeat; /* Prevent repeating */
+   background-size: cover; 
+   background-repeat: no-repeat; 
 }
 
-/* New box container for the bottom right corner of the card */
-.box-container {
-   position: absolute; /* Position it absolutely within the card */
-   bottom: 0px; /* 10px from the bottom */
-   right: 0px; /* 10px from the right */
-   width: 400px; /* Set a width for the box */
-   height: 350px; /* Set a height for the box */
-   padding: 5px; /* Padding inside the box */
-   z-index: 1; /* Ensure it appears above the GIF */
+
+.box-containerR {
+   position: absolute; 
+   bottom: 0px; 
+   right: 0px; 
+   width: 400px; 
+   height: 350px;
+   padding: 5px; 
+   z-index: 1; 
 }
+
+
+.box-containerL {
+  position: absolute;
+  bottom: 0px; 
+  left: 0px; 
+  width: 400px; 
+  height: 350px; 
+  padding: 5px; 
+  z-index: 1; 
+}
+
 
 /* Clear floats after the columns */
 .row:after {
@@ -114,7 +196,37 @@ h5 {
   margin-top: 20px;
 }
 
-/* SideBar Css Code */
+/* Navigation Bar Styles */
+nav {
+    background-color: #333; /* Dark background for the nav */
+    overflow: hidden; /* Clear floats */
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+}
+
+nav ul li {
+    float: left; 
+}
+
+nav ul li a {
+  display: block;
+    display: block; 
+    color: white; 
+    text-align: center; 
+    padding: 14px 16px; 
+    text-decoration: none; 
+}
+
+nav ul li a:hover {
+    background-color: #111; 
+}
+
 .sidepanel  {
   width: 0; /* Start hidden */
   height: 100%; /* Full height */
@@ -162,6 +274,44 @@ h5 {
   background-color:#444;
 }
 
+.button-transition {
+  transition: color 0.5s ease, background-color 0.5s ease; /* Transition for text color and background color */
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0161a1, 0 0 40px #0161a1, 0 0 50px #0161a1, 0 0 60px #0161a1, 0 0 70px #0161a1;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #0161a1, 0 0 40px #0161a1, 0 0 50px #0161a1, 0 0 60px #0161a1, 0 0 70px #0161a1, 0 0 80px #0161a1;
+  }
+}
+
+@keyframes glowtitle {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #400051, 0 0 40px #400051, 0 0 50px #400051, 0 0 60px #400051, 0 0 70px #400051;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #400051, 0 0 40px #400051, 0 0 50px #400051, 0 0 60px #400051, 0 0 70px #400051, 0 0 80px #400051;
+  }
+}
+
+
+.new {
+  opacity: 0;
+  animation: glow 2s forwards;
+}
+
+.old, .new {
+  transition: opacity 0.5s linear;
+}
+
+.wrap:hover .old {
+  opacity: 0;
+}
+.wrap:hover .new {
+  opacity: 1;
+}
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 1500px) {
@@ -177,4 +327,3 @@ h5 {
     padding: 0;
   }
 }
-
