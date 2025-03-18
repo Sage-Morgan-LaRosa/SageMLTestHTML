@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Round Button with GIF</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            flex-direction: column; 
+        }
+        .button {
+            background-color: red;
+            border-radius: 50%;
+            width: 100px; 
+            height: 100px; 
+            border: none;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            cursor: pointer;
+            transition-duration: 2s;
+        }
+        
+        #animated-gif {
+            position: fixed;
+            bottom: 50px; 
+            left: 50%;
+            width: 200px;
+            height: auto; 
+            transform: translateX(-50%);
+            transition: transform 10s ease;
+        }
+
+    </style>
+
+</head>
+<body>
+    <button class="button" onclick="moveGif(); changeButton()">Click Me!</button>
+
+    <img id="animated-gif" src="boat-monkey.gif" alt="Animated GIF" style="display: none;">
+
+    <script>
+        function changeButton() {
+            const button = document.querySelector('.button');
+            button.style.backgroundColor = 'green'; 
+            button.style.boxShadow = '0 0 20px rgba(89, 255, 0, 0.5)';
+            button.style.width = '200px';
+            button.style.height = '200px';
+        }
+
+        function moveGif() {
+            const gif = document.getElementById('animated-gif');
+            if (gif.style.display === 'block') {
+                gif.style.transform = 'translateX(-50%)'; 
+                gif.style.display = 'none'; 
+            } else {
+                gif.style.display = 'block'; 
+                changeButton(); 
+                setTimeout(() => {
+                    const button = document.querySelector('.button');
+                    button.style.backgroundColor = 'red'; 
+                    button.style.boxShadow = '0 0 10px rgba(255, 0, 0, 0.5)';
+                    button.style.width = '100px';
+                    button.style.height = '100px';
+                }, 1000); 
+                gif.style.transform = 'translate(-50%, -300%)'; 
+            }
+        }
+    </script>
+
+</body>
+</html>
