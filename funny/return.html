@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Random canvas circles</title>
+    <style>
+      html {
+        width: 100%;
+        height: inherit;
+      }
+
+      body {
+        margin: 0;
+        background-image: url('Funny_goose.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+
+      canvas {
+        display: block;
+      }
+
+      button {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <button>Update</button>
+
+    <canvas></canvas>
+
+    <script>
+    const btn = document.querySelector('button');
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let WIDTH = document.documentElement.clientWidth;
+    let HEIGHT = document.documentElement.clientHeight;
+
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+
+    function random(number) {
+      return Math.floor(Math.random()*number);
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, WIDTH, HEIGHT);
+      
+      // Define the arc parameters
+      const arcX = WIDTH / 2; // X position of the arc center
+      const arcY = HEIGHT / 2; // Y position of the arc center
+      const arcRadius = 100; // Radius of the arc
+      const startAngle = 0; // Start angle in radians
+      const endAngle = Math.PI; // End angle in radians (half circle)
+
+      // Draw the arc
+      ctx.beginPath();
+      ctx.arc(arcX, arcY, arcRadius, startAngle, endAngle);
+      ctx.clip(); // Clip the canvas to the arc
+
+      // Draw a placeholder or random circles within the arc
+      for (let i = 0; i < 10; i++) {
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; // Example fill color
+        ctx.arc(random(WIDTH), random(HEIGHT), random(50), 0, 2 * Math.PI);
+        ctx.fill();
+      }
+      
+      ctx.restore(); // Restore the canvas state
+    }
+
+    btn.addEventListener('click', draw);
+
+    </script>
+
+  </body>
+</html>
