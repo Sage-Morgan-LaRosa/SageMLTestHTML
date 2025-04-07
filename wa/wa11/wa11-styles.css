@@ -1,0 +1,36 @@
+body{
+    background-image: linear-gradient(to right, red , white, white, red);
+}
+
+h1{
+    position: relative;
+    margin-top: 5%;
+    margin-left: 35%;
+    font-size: 50px;
+}
+.card {
+    position: relative;
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+    height: 500px;
+    background-color: blue;
+    padding: 20px;
+    margin-top: 20px;
+    border: double 1em transparent;
+    border-style: solid;
+    border-color:blueviolet;
+    border-width: 5px;
+    border-radius: 25px;
+    transition-duration: 2.5s;
+    display: flex; 
+    justify-content: center;
+ }
+
+ #BButton {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-color: none;
+    background-color: blue;
+  }
