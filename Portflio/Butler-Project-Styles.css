@@ -27,14 +27,15 @@
   /* Add a card effect */
   .card {
      position: relative; /* Ensure the card is positioned for absolute children */
-     background: linear-gradient(#930000, #0161a1, #400051);
+     background: white;
+     width: 400px;
+     height: 200px;
      padding: 25px;
      margin-top: 20px;
      border-style: solid;
      border-width: 5px;
      border-color: black;
      color: white;
-     z-index: -1;
      display: flex; /* Use flexbox */
      flex-wrap: wrap; /* Allow wrapping to create rows */
      justify-content: space-between; /* Space out the columns */
