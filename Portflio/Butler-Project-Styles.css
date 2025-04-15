@@ -18,20 +18,14 @@ body {
   height: 200px;
 }
 
-/* Create two unequal columns that floats next to each other */
-/* Left column */
-.leftcolumn {   
+
+.column {   
   float: left;
   width: 75%;
-  padding-left: 5%;
+  padding-left: 20%;
 }
 
-/* Right column */
-.rightcolumn {
-  float: left;
-  width: 15%;
-  padding-left: 20px;
-}
+
 
 /* Fake image */
 .fakeimg {
@@ -65,14 +59,7 @@ body {
   z-index: -1;
   opacity: 0;
 }
-.cardWrap:hover::before {
-  opacity: 1;
-}
 
-.cardWrap:hover{
-  background: transparent;
-  box-shadow: 10px 10px 5px rgb(0, 255, 247);
-}
 .card {
    background-color: white;
    color: black;
@@ -85,8 +72,6 @@ body {
    background-clip: padding-box;
    transition-duration: 2.5s;
 }
-
-
 
 
 
