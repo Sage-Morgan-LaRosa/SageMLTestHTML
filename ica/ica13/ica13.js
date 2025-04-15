@@ -64,12 +64,40 @@ class Ball {
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < this.size + ball.size) {
-          ball.color = this.color = randomRGB();
+          // Collision response - elastic collision between two balls of equal mass
+          const dx = ball.x - this.x;
+          const dy = ball.y - this.y;
+          const collisionAngle = Math.atan2(dy, dx);
+
+          const speed1 = Math.sqrt(this.velX * this.velX + this.velY * this.velY);
+          const speed2 = Math.sqrt(ball.velX * ball.velX + ball.velY * ball.velY);
+
+          const direction1 = Math.atan2(this.velY, this.velX);
+          const direction2 = Math.atan2(ball.velY, ball.velX);
+
+          const velocityX1 = speed1 * Math.cos(direction1 - collisionAngle);
+          const velocityY1 = speed1 * Math.sin(direction1 - collisionAngle);
+          const velocityX2 = speed2 * Math.cos(direction2 - collisionAngle);
+          const velocityY2 = speed2 * Math.sin(direction2 - collisionAngle);
+
+          // Since masses are equal, swap the x velocities
+          const finalVelocityX1 = velocityX2;
+          const finalVelocityX2 = velocityX1;
+
+          const finalVelocityY1 = velocityY1;
+          const finalVelocityY2 = velocityY2;
+
+          this.velX = Math.cos(collisionAngle) * finalVelocityX1 + Math.cos(collisionAngle + Math.PI / 2) * finalVelocityY1;
+          this.velY = Math.sin(collisionAngle) * finalVelocityX1 + Math.sin(collisionAngle + Math.PI / 2) * finalVelocityY1;
+          ball.velX = Math.cos(collisionAngle) * finalVelocityX2 + Math.cos(collisionAngle + Math.PI / 2) * finalVelocityY2;
+          ball.velY = Math.sin(collisionAngle) * finalVelocityX2 + Math.sin(collisionAngle + Math.PI / 2) * finalVelocityY2;
         }
       }
     }
   }
 }
+
+// I had this code ready haha Im a nerd
 
 const balls = [];
 
