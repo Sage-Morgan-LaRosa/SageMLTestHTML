@@ -1,79 +1,119 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  /* Add a gray background color with some padding */
-  body {
-      perspective: 100vmin;
-    }
-  
-  /* Header/Blog Title */
-  .header {
-    padding: 10px;
-    font-size: 40px;
-    text-align: center;
-    background: transparent;
-    color:#fff;
-    width: 400px;
-    height: 200px;
+  box-sizing: border-box;
+}
+
+/* Add a gray background color with some padding */
+body {
+    perspective: 100vmin;
   }
 
-/* column */
-.contentColumn {   
-    float: left;
-    width: 100%;
-  }
-  
-  /* Add a card effect */
-  .card {
-     position: relative; /* Ensure the card is positioned for absolute children */
-     background: white;
-     width: 400px;
-     height: 200px;
-     padding: 25px;
-     margin-top: 20px;
-     border-style: solid;
-     border-width: 5px;
-     border-color: black;
-     color: white;
-     display: flex; /* Use flexbox */
-     flex-wrap: wrap; /* Allow wrapping to create rows */
-     justify-content: space-between; /* Space out the columns */
-  }
-  
-  .card-content {
-    display: flex;
-    flex-direction: column; /* Arrange items in a column */
-    flex: 3; /* Allow it to grow and fill the space */
-  }
-  
-  /* Style for each cell */
-  .cell {
-    flex: 1 0 30%; 
-    margin: 5px; 
-  }
-  
-  .cell p {
-    flex: 1 0 40%; 
-    margin: 5px; 
-  }
-  
-  .cell h2, .cell h3, .cell h4, .cell h5 {
-    margin: 0; 
-    padding: 1%; 
-  }
+/* Header/Blog Title */
+.header {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background: transparent;
+  color:#fff;
+  width: 400px;
+  height: 200px;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+  padding-left: 5%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 15%;
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+
+/* Add a card effect for articles */
+.cardWrap {
+  position: relative;
+  background: linear-gradient(127deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 100.71%);
+  padding: 5px;
+  margin-top: 20px;
+  border-radius: 15px;
+  transition: all 1s ease;
+  z-index: 1;
+}
+
+.cardWrap::before{
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 15px;
+  background: linear-gradient(336deg, rgba(65, 65, 248, 0.8), rgba(0, 0, 255, 0) 100.71%);
+  transition: opacity 0.5s linear;
+  z-index: -1;
+  opacity: 0;
+}
+.cardWrap:hover::before {
+  opacity: 1;
+}
+
+.cardWrap:hover{
+  background: transparent;
+  box-shadow: 10px 10px 5px rgb(0, 255, 247);
+}
+.card {
+   background-color: white;
+   color: black;
+   padding: 20px;
+   margin-top: 20px;
+   border: double 1em transparent;
+   border-style: solid;
+   border-width: 15px;
+   border-radius: 25px;
+   background-clip: padding-box;
+   transition-duration: 2.5s;
+}
+
+
+
+
+
 /* Clear floats after the columns */
 .row:after {
-    content: "";
-    display: table;
-    clear: both;
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
   }
+}
 
-
-
-
-
-  html {
+html {
     color-scheme: dark only;
   }
   @layer base {
