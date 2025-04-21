@@ -1,3 +1,4 @@
+// probelm 1
 const employees = [
     {
         firstName: "Sam",
@@ -20,6 +21,7 @@ const employees = [
         salary: 21200,
         raiseEligible: false
     },
+    //problem 3
     {
         firstName: "Anna",
         department: "Tech",
@@ -29,17 +31,21 @@ const employees = [
     }
 ];
 
+console.log(employees)
+
+//problem 2
 const company = {
     companyName: "Tech Stars",
     website: "www.techstars.site",
     employees: employees
 };
+console.log(company)
 
-// Problem 1: Calculate total salary for all employees
+//problem 4
 const totalSalary = company.employees.reduce((total, employee) => total + employee.salary, 0);
 console.log("Total Salary:", totalSalary);
 
-// Problem 2: Update salary for raise-eligible employees
+// problem 5
 company.employees.forEach(employee => {
     if (employee.raiseEligible) {
         employee.salary *= 1.10; // Increase salary by 10%
@@ -48,7 +54,7 @@ company.employees.forEach(employee => {
 });
 console.log("Updated Employees:", company.employees);
 
-// Problem 3: Update employees with working from home status
+//problem 6
 const workingFromHome = ['Anna', 'Sam'];
 company.employees.forEach(employee => {
     employee.wfh = workingFromHome.includes(employee.firstName);
