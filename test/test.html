@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="test_styles.css">
+</head>
+<body>
+  <div class="phone-number-container">
+    <input type="text" maxlength="3" class="phone-box" placeholder="Area">
+    <input type="text" maxlength="3" class="phone-box" placeholder="Prefix">
+    <input type="text" maxlength="4" class="phone-box" placeholder="Line">
+  </div>
+
+  <div class="slider-container">
+    <label for="temp">Choose a comfortable temperature:</label><br>
+    <input
+      type="range"
+      id="temp"
+      name="temp"
+      min="-10"
+      max="100"
+      step="10"
+      value="0"
+    >
+  </div>
+
+  <div class="markers-container">
+    <div class="slider-markers">
+      <div class="marker-rect"></div>
+      <div class="marker-rect"></div>
+      <div class="marker-rect"></div>
+      <div class="marker-rect"></div>
+      <div class="marker-rect"></div>
+      <div class="marker-rect"></div>
+      <div class="marker-rect"></div>
+      <div class="marker-rect"></div>
+      <div class="marker-rect"></div>
+      <div class="marker-rect"></div>
+      <div class="marker-rect"></div>
+    </div>
+  </div>
+
+  <script src="test_script.js"></script>
+</body>
+</html>

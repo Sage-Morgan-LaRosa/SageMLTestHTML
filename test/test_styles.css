@@ -1,0 +1,118 @@
+p,
+label {
+  font:
+    1.5rem "Fira Sans",
+    sans-serif;
+}
+
+input {
+  margin: 0.6rem;
+}
+
+/* Style for phone number container */
+.phone-number-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.phone-box {
+  width: 80px;
+  padding: 10px;
+  font-size: 1.5rem;
+  border: 2px solid #3399ff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Increase size of the slider */
+input[type="range"]#temp {
+  width: 600px;
+  height: 40px;
+  -webkit-appearance: none;
+  background: transparent;
+  margin: 0.6rem 0;
+}
+
+/* Style the track */
+input[type="range"]#temp::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: 100% 12px;
+  background-color: #004085;
+  border-radius: 4px;
+  border: 1px solid #7a0000; /* darker blue border */
+}
+
+input[type="range"]#temp::-moz-range-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  background: #007bff; /* blue background */
+  border-radius: 4px;
+  border: 1px solid #0056b3; /* darker blue border */
+}
+
+/* Style the thumb */
+input[type="range"]#temp::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #004085; /* dark blue border */
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: #3399ff; /* lighter blue */
+  cursor: pointer;
+  margin-top: -16px; /* Center the thumb on the track */
+  box-shadow: 0 0 5px rgba(51,153,255,0.7);
+}
+
+body {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  margin: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:black;
+  border-color: red;
+  color:white;
+  border: 2px solid red;
+  border-radius: 15px;
+}
+
+.markers-container {
+  margin-top: 10px; /* space below slider container */
+  display: flex;
+  justify-content: center;
+  width: 600px; /* match slider width */
+  position: relative; /* to contain absolute positioned children */
+}
+
+.slider-markers {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* full width of markers-container */
+  margin: 0;
+  position: relative; /* to contain absolute positioned marker-rects */
+  height: 30px; /* match marker-rect height */
+}
+
+.marker-rect {
+  width: 6px;
+  height: 20px;
+  background-color: #0056b3;
+  border-radius: 2px;
+  position: relative; /* position absolute for left positioning */
+  top: 0;
+}
