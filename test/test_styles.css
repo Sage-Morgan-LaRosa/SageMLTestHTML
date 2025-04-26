@@ -25,6 +25,61 @@ input {
   border: 2px solid #3399ff;
   border-radius: 5px;
   text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  color: transparent;
+  background: linear-gradient(180deg, #004466, #002233);
+  box-shadow: inset 0 0 10px #000, 0 0 10px #0ff;
+  position: relative;
+  overflow: hidden;
+}
+
+.digit-boxes {
+  display: flex;
+  gap: 5px;
+}
+
+.digit-box {
+  width: 20px;
+  height: 40px;
+  background: linear-gradient(180deg, #004466, #002233);
+  border: 2px solid #3399ff;
+  border-radius: 5px;
+  color: #0ff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 40px;
+  box-shadow: inset 0 0 10px #000, 0 0 10px #0ff;
+  user-select: none;
+  position: relative;
+  perspective: 1000px;
+  cursor: default;
+}
+
+.digit-box.flipping {
+  animation: flip 0.6s ease forwards;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-180deg);
+  }
+}
+
+.phone-box.flipping {
+  animation: flip 0.6s ease forwards;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-180deg);
+  }
 }
 
 /* Increase size of the slider */
@@ -84,11 +139,21 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color:black;
+  background-color: black;
   border-color: red;
-  color:white;
+  color: white;
   border: 2px solid red;
   border-radius: 15px;
+  padding: 20px;
+  box-shadow: inset 4px 4px 8px rgba(255, 0, 0, 0.6), inset -4px -4px 8px rgba(255, 0, 0, 0.3);
+}
+
+.markers-container {
+  margin-top: 10px; /* space below slider container */
+  display: flex;
+  justify-content: center;
+  width: 560px; /* adjusted width to fit inside padding */
+  position: relative; /* to contain absolute positioned children */
 }
 
 .markers-container {

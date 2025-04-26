@@ -143,16 +143,16 @@ document.addEventListener('DOMContentLoaded', function() {
         else {
             // Map slider values to digit indices (10 -> 0, 20 -> 1, ..., 100 -> 9)
             const valueToIndexMap = {
-                10: 0,
-                20: 1,
-                30: 2,
-                40: 3,
-                50: 4,
-                60: 5,
-                70: 6,
-                80: 7,
-                90: 8,
-                100: 9
+                10: 9,
+                20: 8,
+                30: 7,
+                40: 6,
+                50: 5,
+                60: 4,
+                70: 3,
+                80: 2,
+                90: 1,
+                100: 0
             };
 
             const digitIndex = valueToIndexMap[randomizationValue];
@@ -164,9 +164,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function displayDigits(digits) {
-        phoneBoxes[0].value = digits.slice(0, 3).join('');
-        phoneBoxes[1].value = digits.slice(3, 6).join('');
-        phoneBoxes[2].value = digits.slice(6, 10).join('');
+        // Animate digit changes with flipping effect on digit boxes
+        const wrappers = document.querySelectorAll('.phone-box-wrapper');
+        for (let i = 0; i < 3; i++) {
+            const wrapper = wrappers[i];
+            if (!wrapper) continue;
+
+            const newValue = i === 0 ? digits.slice(0, 3).join('') :
+                             i === 1 ? digits.slice(3, 6).join('') :
+                                       digits.slice(6, 10).join('');
+
+            // Update digit boxes
+            const digitBoxes = wrapper.querySelectorAll('.digit-box');
+            for (let j = 0; j < digitBoxes.length; j++) {
+                const digitBox = digitBoxes[j];
+                const newDigit = newValue[j] || ' ';
+                if (digitBox.textContent !== newDigit) {
+                    digitBox.classList.add('flipping');
+                    digitBox.textContent = newDigit;
+                    digitBox.addEventListener('animationend', function handler() {
+                        digitBox.classList.remove('flipping');
+                        digitBox.removeEventListener('animationend', handler);
+                    });
+                }
+            }
+        }
     }
 
     function displayDigitsWithReverse(digits, sliderValue) {
@@ -241,3 +263,57 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call on window resize to keep alignment responsive
     window.addEventListener('resize', positionMarkerRects);
 });
+
+// Preserve digits that are not randomized by wrapping generateDigits
+(function() {
+    const originalGenerateDigits = generateDigits;
+    generateDigits = function(randomizationValue) {
+        const previousDigits = getDigitsArray();
+        const newDigits = originalGenerateDigits(randomizationValue);
+
+        // Determine which digits are randomized based on randomizationValue
+        // If randomizationValue is 0 or -10, no digits change, so return previousDigits
+        if (randomizationValue === 0 || randomizationValue === -10) {
+            return previousDigits;
+        }
+
+        // For values 10 to 100, determine which digits are randomized
+        // Create a mask array indicating which digits are randomized
+        const totalDigits = 10;
+        let randomizedMask = new Array(totalDigits).fill(false);
+
+        if (randomizationValue === 100) {
+            randomizedMask.fill(true);
+        } else if ([90,80,70,60,50,40,30,20,10].includes(randomizationValue)) {
+            const count = totalDigits - (randomizationValue / 10);
+            for (let i = 0; i < count; i++) {
+                randomizedMask[i] = true;
+            }
+        } else {
+            // Single digit randomization
+            const valueToIndexMap = {
+                10: 9,
+                20: 8,
+                30: 7,
+                40: 6,
+                50: 5,
+                60: 4,
+                70: 3,
+                80: 2,
+                90: 1,
+                100: 0
+            };
+            const digitIndex = valueToIndexMap[randomizationValue];
+            if (digitIndex !== undefined) {
+                randomizedMask[digitIndex] = true;
+            }
+        }
+
+        // Combine previousDigits and newDigits based on randomizedMask
+        const combinedDigits = previousDigits.map((digit, index) => {
+            return randomizedMask[index] ? newDigits[index] : digit;
+        });
+
+        return combinedDigits;
+    };
+})();
