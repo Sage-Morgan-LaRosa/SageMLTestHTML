@@ -39,16 +39,16 @@ input {
 }
 
 .digit-box {
-  width: 20px;
-  height: 40px;
+  width: 100px;
+  height: 200px;
   background: linear-gradient(180deg, #004466, #002233);
   border: 2px solid #3399ff;
   border-radius: 5px;
   color: #0ff;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1.5rem;
+  font-size: 7.5rem;
   text-align: center;
-  line-height: 40px;
+  line-height: 200px;
   box-shadow: inset 0 0 10px #000, 0 0 10px #0ff;
   user-select: none;
   position: relative;

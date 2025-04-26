@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let digit8 = '0';
     let digit9 = '0';
 
+    // Global variable to hold randomized mask for digits
+    let randomizedMaskGlobal = new Array(10).fill(false);
+
     // Helper function to get all digits as an array
     function getDigitsArray() {
         return [digit0, digit1, digit2, digit3, digit4, digit5, digit6, digit7, digit8, digit9];
@@ -35,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize slider value and phone number inputs
     slider.value = 0;
-    displayDigits(getDigitsArray());
+    displayDigits(getDigitsArray(), randomizedMaskGlobal);
 
     slider.addEventListener('mouseup', function() {
         const startValue = parseInt(slider.value, 10);
@@ -48,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let i = 0; i < 10; i++) {
                 randomDigits.push(Math.floor(Math.random() * 10).toString());
             }
-            displayDigits(randomDigits);
+            displayDigits(randomDigits, randomizedMaskGlobal);
         }, 50);
 
         function animateSlider(time) {
@@ -75,68 +78,125 @@ document.addEventListener('DOMContentLoaded', function() {
         if (randomizationValue === -10) {
             // All zeros
             digits = new Array(totalDigits).fill('0');
+            randomizedMaskGlobal = new Array(totalDigits).fill(false);
             return digits;
         } else if (randomizationValue === 0) {
+            randomizedMaskGlobal = new Array(totalDigits).fill(false);
             return digits;
         } else if (randomizationValue === 100) {
             // Randomize all digits
             for (let i = 0; i < totalDigits; i++) {
                 digits[i] = Math.floor(Math.random() * 10).toString();
             }
+            randomizedMaskGlobal = new Array(totalDigits).fill(true);
             return digits;
         } else if (randomizationValue === 90) {
             // Change all digits except digit9
             for (let i = 0; i < totalDigits - 1; i++) {
                 digits[i] = Math.floor(Math.random() * 10).toString();
             }
+            randomizedMaskGlobal = new Array(totalDigits).fill(true);
+            randomizedMaskGlobal[9] = false;
             return digits;
         } else if (randomizationValue === 80) {
             // Change all digits except digit9
             for (let i = 0; i < totalDigits - 2; i++) {
                 digits[i] = Math.floor(Math.random() * 10).toString();
             }
+            randomizedMaskGlobal = new Array(totalDigits).fill(true);
+            randomizedMaskGlobal[8] = false;
+            randomizedMaskGlobal[9] = false;
             return digits;
         } else if (randomizationValue === 70) {
             // Change all digits except digit9
             for (let i = 0; i < totalDigits - 3; i++) {
                 digits[i] = Math.floor(Math.random() * 10).toString();
             }
+            randomizedMaskGlobal = new Array(totalDigits).fill(true);
+            randomizedMaskGlobal[7] = false;
+            randomizedMaskGlobal[8] = false;
+            randomizedMaskGlobal[9] = false;
             return digits;
         } else if (randomizationValue === 60) {
             // Change all digits except digit9
             for (let i = 0; i < totalDigits - 4; i++) {
                 digits[i] = Math.floor(Math.random() * 10).toString();
             }
+            randomizedMaskGlobal = new Array(totalDigits).fill(true);
+            randomizedMaskGlobal[6] = false;
+            randomizedMaskGlobal[7] = false;
+            randomizedMaskGlobal[8] = false;
+            randomizedMaskGlobal[9] = false;
             return digits;
         } else if (randomizationValue === 50) {
             // Change all digits except digit9
             for (let i = 0; i < totalDigits - 5; i++) {
                 digits[i] = Math.floor(Math.random() * 10).toString();
             }
+            randomizedMaskGlobal = new Array(totalDigits).fill(true);
+            randomizedMaskGlobal[5] = false;
+            randomizedMaskGlobal[6] = false;
+            randomizedMaskGlobal[7] = false;
+            randomizedMaskGlobal[8] = false;
+            randomizedMaskGlobal[9] = false;
             return digits;
         } else if (randomizationValue === 40) {
             // Change all digits except digit9
             for (let i = 0; i < totalDigits - 6; i++) {
                 digits[i] = Math.floor(Math.random() * 10).toString();
             }
+            randomizedMaskGlobal = new Array(totalDigits).fill(true);
+            randomizedMaskGlobal[4] = false;
+            randomizedMaskGlobal[5] = false;
+            randomizedMaskGlobal[6] = false;
+            randomizedMaskGlobal[7] = false;
+            randomizedMaskGlobal[8] = false;
+            randomizedMaskGlobal[9] = false;
             return digits;
         } else if (randomizationValue === 30) {
             // Change all digits except digit9
             for (let i = 0; i < totalDigits - 7; i++) {
                 digits[i] = Math.floor(Math.random() * 10).toString();
             }
+            randomizedMaskGlobal = new Array(totalDigits).fill(true);
+            randomizedMaskGlobal[3] = false;
+            randomizedMaskGlobal[4] = false;
+            randomizedMaskGlobal[5] = false;
+            randomizedMaskGlobal[6] = false;
+            randomizedMaskGlobal[7] = false;
+            randomizedMaskGlobal[8] = false;
+            randomizedMaskGlobal[9] = false;
             return digits;
         } else if (randomizationValue === 20) {
             // Change all digits except digit9
             for (let i = 0; i < totalDigits - 8; i++) {
                 digits[i] = Math.floor(Math.random() * 10).toString();
             }
+            randomizedMaskGlobal = new Array(totalDigits).fill(true);
+            randomizedMaskGlobal[2] = false;
+            randomizedMaskGlobal[3] = false;
+            randomizedMaskGlobal[4] = false;
+            randomizedMaskGlobal[5] = false;
+            randomizedMaskGlobal[6] = false;
+            randomizedMaskGlobal[7] = false;
+            randomizedMaskGlobal[8] = false;
+            randomizedMaskGlobal[9] = false;
             return digits;
         } else if (randomizationValue === 10) {
             // Change all digits except digit9
             for (let i = 0; i < totalDigits - 9; i++) {
                 digits[i] = Math.floor(Math.random() * 10).toString();
             }
+            randomizedMaskGlobal = new Array(totalDigits).fill(true);
+            randomizedMaskGlobal[1] = false;
+            randomizedMaskGlobal[2] = false;
+            randomizedMaskGlobal[3] = false;
+            randomizedMaskGlobal[4] = false;
+            randomizedMaskGlobal[5] = false;
+            randomizedMaskGlobal[6] = false;
+            randomizedMaskGlobal[7] = false;
+            randomizedMaskGlobal[8] = false;
+            randomizedMaskGlobal[9] = false;
             return digits;
         }       
 
@@ -158,46 +218,91 @@ document.addEventListener('DOMContentLoaded', function() {
             const digitIndex = valueToIndexMap[randomizationValue];
             if (digitIndex !== undefined) {
                 digits[digitIndex] = Math.floor(Math.random() * 10).toString();
+                randomizedMaskGlobal = new Array(totalDigits).fill(false);
+                randomizedMaskGlobal[digitIndex] = true;
             }
             return digits;
         }
     }
 
-    function displayDigits(digits) {
-        // Animate digit changes with flipping effect on digit boxes
-        const wrappers = document.querySelectorAll('.phone-box-wrapper');
-        for (let i = 0; i < 3; i++) {
-            const wrapper = wrappers[i];
-            if (!wrapper) continue;
+function displayDigits(digits, randomizedMask, sliderDigitIndexThreshold = 9) {
+    // Animate digit changes with flipping effect on digit boxes
+    const wrappers = document.querySelectorAll('.phone-box-wrapper');
+    let globalDigitIndex = 0;
 
-            const newValue = i === 0 ? digits.slice(0, 3).join('') :
-                             i === 1 ? digits.slice(3, 6).join('') :
-                                       digits.slice(6, 10).join('');
+    // Get current displayed digits to compare and hold non-randomized digits
+    const currentDigits = [];
+    wrappers.forEach(wrapper => {
+        const digitBoxes = wrapper.querySelectorAll('.digit-box');
+        digitBoxes.forEach(digitBox => {
+            currentDigits.push(digitBox.textContent);
+        });
+    });
 
-            // Update digit boxes
-            const digitBoxes = wrapper.querySelectorAll('.digit-box');
-            for (let j = 0; j < digitBoxes.length; j++) {
-                const digitBox = digitBoxes[j];
-                const newDigit = newValue[j] || ' ';
-                if (digitBox.textContent !== newDigit) {
-                    digitBox.classList.add('flipping');
+    for (let i = 0; i < 3; i++) {
+        const wrapper = wrappers[i];
+        if (!wrapper) continue;
+
+        const newValue = i === 0 ? digits.slice(0, 3).join('') :
+                         i === 1 ? digits.slice(3, 6).join('') :
+                                   digits.slice(6, 10).join('');
+
+        // Update digit boxes
+        const digitBoxes = wrapper.querySelectorAll('.digit-box');
+        for (let j = 0; j < digitBoxes.length; j++) {
+            const digitBox = digitBoxes[j];
+            const newDigit = newValue[j] || ' ';
+
+            if (globalDigitIndex > sliderDigitIndexThreshold) {
+                // Do not update digit or animate - keep static
+            } else if (newDigit !== currentDigits[globalDigitIndex]) {
+                // Animate flipping only if digit changes from current display and is randomized
+                if (randomizedMask[globalDigitIndex]) {
+                    // Randomly decide whether to animate flip
+                    if (Math.random() < 0.5) {
+                        digitBox.classList.add('flipping');
+                        digitBox.textContent = newDigit;
+                        digitBox.addEventListener('animationend', function handler() {
+                            digitBox.classList.remove('flipping');
+                            digitBox.removeEventListener('animationend', handler);
+                        });
+                    } else {
+                        // Update digit without animation
+                        digitBox.textContent = newDigit;
+                    }
+                } else {
+                    // Digit not randomized, update without animation
                     digitBox.textContent = newDigit;
-                    digitBox.addEventListener('animationend', function handler() {
-                        digitBox.classList.remove('flipping');
-                        digitBox.removeEventListener('animationend', handler);
-                    });
                 }
             }
+            globalDigitIndex++;
         }
     }
+}
 
-    function displayDigitsWithReverse(digits, sliderValue) {
-        if (sliderValue === 0) {
-            displayDigits(digits);
-        } else {
-            displayDigits(digits.slice().reverse());
-        }
+function displayDigitsWithReverse(digits, sliderValue) {
+    // Map slider values to digit indices (reverse of valueToIndexMap)
+    const valueToIndexMap = {
+        10: 9,
+        20: 8,
+        30: 7,
+        40: 6,
+        50: 5,
+        60: 4,
+        70: 3,
+        80: 2,
+        90: 1,
+        100: 0
+    };
+
+    const sliderDigitIndexThreshold = valueToIndexMap[sliderValue] !== undefined ? valueToIndexMap[sliderValue] : 9;
+
+    if (sliderValue === 0) {
+        displayDigits(digits, randomizedMaskGlobal, sliderDigitIndexThreshold);
+    } else {
+        displayDigits(digits.slice().reverse(), randomizedMaskGlobal, sliderDigitIndexThreshold);
     }
+}
 
 
     // New function to position marker-rect elements to match slider markers
