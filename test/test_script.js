@@ -1,6 +1,18 @@
+const valueToIndexMap = {
+    10: 9,
+    20: 8,
+    30: 7,
+    40: 6,
+    50: 5,
+    60: 4,
+    70: 3,
+    80: 2,
+    90: 1,
+    100: 0
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     const slider = document.getElementById('temp');
-    const phoneBoxes = document.querySelectorAll('.phone-box');
 
     // Define each digit as its own variable
     let digit0 = '0';
@@ -14,6 +26,19 @@ document.addEventListener('DOMContentLoaded', function() {
     let digit8 = '0';
     let digit9 = '0';
 
+    const valueToIndexMap = {
+        10: 9,
+        20: 8,
+        30: 7,
+        40: 6,
+        50: 5,
+        60: 4,
+        70: 3,
+        80: 2,
+        90: 1,
+        100: 0
+    };
+    
     // Global variable to hold randomized mask for digits
     let randomizedMaskGlobal = new Array(10).fill(false);
 
@@ -201,20 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }       
 
         else {
-            // Map slider values to digit indices (10 -> 0, 20 -> 1, ..., 100 -> 9)
-            const valueToIndexMap = {
-                10: 9,
-                20: 8,
-                30: 7,
-                40: 6,
-                50: 5,
-                60: 4,
-                70: 3,
-                80: 2,
-                90: 1,
-                100: 0
-            };
-
             const digitIndex = valueToIndexMap[randomizationValue];
             if (digitIndex !== undefined) {
                 digits[digitIndex] = Math.floor(Math.random() * 10).toString();
@@ -259,17 +270,13 @@ function displayDigits(digits, randomizedMask, sliderDigitIndexThreshold = 9) {
                 // Animate flipping only if digit changes from current display and is randomized
                 if (randomizedMask[globalDigitIndex]) {
                     // Randomly decide whether to animate flip
-                    if (Math.random() < 0.5) {
-                        digitBox.classList.add('flipping');
-                        digitBox.textContent = newDigit;
-                        digitBox.addEventListener('animationend', function handler() {
-                            digitBox.classList.remove('flipping');
-                            digitBox.removeEventListener('animationend', handler);
-                        });
-                    } else {
-                        // Update digit without animation
-                        digitBox.textContent = newDigit;
-                    }
+                if (Math.random() < 0.5) {
+                    // Update digit without animation (removed flipping animation)
+                    digitBox.textContent = newDigit;
+                } else {
+                    // Update digit without animation
+                    digitBox.textContent = newDigit;
+                }
                 } else {
                     // Digit not randomized, update without animation
                     digitBox.textContent = newDigit;
@@ -281,21 +288,10 @@ function displayDigits(digits, randomizedMask, sliderDigitIndexThreshold = 9) {
 }
 
 function displayDigitsWithReverse(digits, sliderValue) {
-    // Map slider values to digit indices (reverse of valueToIndexMap)
-    const valueToIndexMap = {
-        10: 9,
-        20: 8,
-        30: 7,
-        40: 6,
-        50: 5,
-        60: 4,
-        70: 3,
-        80: 2,
-        90: 1,
-        100: 0
-    };
+        // Map slider values to digit indices (reverse of valueToIndexMap)
 
-    const sliderDigitIndexThreshold = valueToIndexMap[sliderValue] !== undefined ? valueToIndexMap[sliderValue] : 9;
+        const sliderDigitIndexThreshold = valueToIndexMap[sliderValue] !== undefined ? valueToIndexMap[sliderValue] : 9;
+
 
     if (sliderValue === 0) {
         displayDigits(digits, randomizedMaskGlobal, sliderDigitIndexThreshold);
@@ -307,40 +303,43 @@ function displayDigitsWithReverse(digits, sliderValue) {
 
     // New function to position marker-rect elements to match slider markers
     function positionMarkerRects() {
-        const markerRects = document.querySelectorAll('.marker-rect');
+        const sliderMarkersContainer = document.querySelector('.slider-markers');
+        if (!sliderMarkersContainer) return;
+
+        // Clear existing marker-rect elements
+        sliderMarkersContainer.innerHTML = '';
+
+        // Number of markers based on valueToIndexMap keys count plus one for zero marker
+        const markersCount = Object.keys(valueToIndexMap).length + 1;
+
+        // Create marker-rect elements equal to markersCount
+        for (let i = 0; i < markersCount; i++) {
+            const rect = document.createElement('div');
+            rect.classList.add('marker-rect');
+            rect.id = 'marker' + i;
+            sliderMarkersContainer.appendChild(rect);
+        }
+
         const sliderRect = slider.getBoundingClientRect();
         const sliderWidth = sliderRect.width;
-
-        const markersCount = markerRects.length;
-        if (markersCount === 0) return;
-
-        // Assign ids to marker rects starting from 0
-        markerRects.forEach((rect, index) => {
-            rect.id = 'marker' + index;
-        });
 
         // Calculate spacing between markers
         const spacing = sliderWidth / (markersCount - 1);
 
         // Get width of a marker-rect element to center it
-        const markerWidth = markerRects[0].offsetWidth;
+        const markerWidth = sliderMarkersContainer.querySelector('.marker-rect').offsetWidth;
 
-        markerRects.forEach((rect, index) => {
-            // Calculate left position relative to slider container
-            // Adjust leftPos to center the marker-rect on the tick
-            const leftPos = spacing * index - markerWidth / 2;
-
-            // Position the marker-rect relative to the slider container
+        // Position each marker-rect
+        for (let i = 0; i < markersCount; i++) {
+            const rect = document.getElementById('marker' + i);
+            const leftPos = spacing * i - markerWidth / 2;
             rect.style.position = 'absolute';
             rect.style.left = leftPos + 'px';
-        });
+        }
 
         // Ensure the parent container is positioned relatively for absolute children
-        const sliderMarkersContainer = document.querySelector('.slider-markers');
-        if (sliderMarkersContainer) {
-            sliderMarkersContainer.style.position = 'relative';
-            sliderMarkersContainer.style.width = sliderWidth + 'px';
-        }
+        sliderMarkersContainer.style.position = 'relative';
+        sliderMarkersContainer.style.width = sliderWidth + 'px';
     }
 
     // Call on DOMContentLoaded
@@ -396,18 +395,6 @@ function displayDigitsWithReverse(digits, sliderValue) {
             }
         } else {
             // Single digit randomization
-            const valueToIndexMap = {
-                10: 9,
-                20: 8,
-                30: 7,
-                40: 6,
-                50: 5,
-                60: 4,
-                70: 3,
-                80: 2,
-                90: 1,
-                100: 0
-            };
             const digitIndex = valueToIndexMap[randomizationValue];
             if (digitIndex !== undefined) {
                 randomizedMask[digitIndex] = true;
