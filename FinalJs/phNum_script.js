@@ -29,7 +29,30 @@ document.addEventListener('DOMContentLoaded', () => {
       if (digitIndex >= 0 && digitIndex < digitBoxes.length) {
         // Assign digits in reverse order from right to left
         for (let i = digitBoxes.length - 1; i >= digitBoxes.length - 1 - digitIndex; i--) {
-          digitBoxes[i].textContent = randomDigit();
+          const newDigit = randomDigit();
+          const digitBox = digitBoxes[i];
+          const front = digitBox.querySelector('.digit-front');
+          const back = digitBox.querySelector('.digit-back');
+
+          // Set back face to new digit
+          back.textContent = newDigit;
+
+          // Remove flutter-flip class if present to restart animation
+          digitBox.classList.remove('flutter-flip');
+
+          // Trigger reflow to restart animation
+          void digitBox.offsetWidth;
+
+          // Add flutter-flip animation class
+          digitBox.classList.add('flutter-flip');
+
+          // Listen for animation events to update front face and remove class
+          digitBox.addEventListener('animationend', () => {
+            // Update front face to new digit after flip
+            front.textContent = newDigit;
+            // Remove animation class to allow re-triggering
+            digitBox.classList.remove('flutter-flip');
+          }, { once: true });
         }
       }
     }
