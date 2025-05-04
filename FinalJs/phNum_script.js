@@ -1,17 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
   const digitBoxes = Array.from(document.querySelectorAll('.digit-box'));
   const slider = document.getElementById('temp');
+  const saveBtnContainer = document.querySelector('.save-button-container');
+  const saveBtn = document.getElementById('saveBtn');
+  const randomizeLimit = 5;
+  const randomizeCounts = new Array(digitBoxes.length).fill(0);
 
   // Function once pulled back slider for reset
   function resetDigits() {
     digitBoxes.forEach(box => {
       box.textContent = '0';
+      box.classList.remove('completed');
     });
+    randomizeCounts.fill(0);
+    saveBtnContainer.classList.remove('top');
   }
 
   // Function  randomly generate a digit (0-9)
   function randomDigit() {
     return Math.floor(Math.random() * 9);
+  }
+
+  // Check if all digits have hit the randomize limit
+  function allDigitsCompleted() {
+    return digitBoxes.every(box => box.classList.contains('completed'));
   }
 
   // Function to update digits based on slider value
@@ -23,12 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
       // just do nothing just nothing 
       return;
     } else {
-      // update the digit and all digits behind it      const digitIndex = value / 10 - 1;
+      const digitIndex = value / 10 - 1;
       if (digitIndex >= 0 && digitIndex < digitBoxes.length) {
-        // Assign digits in reverse order from right to left
-        for (let i = digitBoxes.length - 1; i >= digitBoxes.length - 1 - digitIndex; i--) {
-          digitBoxes[i].textContent = randomDigit();
-        }
+        // Assign digit only to the digitIndex position
+        digitBoxes[digitBoxes.length - 1 - digitIndex].textContent = randomDigit();
       }
     }
   }
@@ -42,16 +52,36 @@ document.addEventListener('DOMContentLoaded', () => {
     function animate(time) {
       const elapsed = time - startTime;
       if (elapsed < duration) {
-        // Randomize only digits up to digitIndex
+        // Randomize only the digit at digitIndex and add highlight class
         if (digitIndex >= 0 && digitIndex < digitBoxes.length) {
-          for (let i = digitBoxes.length - 1; i >= digitBoxes.length - 1 - digitIndex; i--) {
-            digitBoxes[i].textContent = randomDigit();
+          const box = digitBoxes[digitBoxes.length - 1 - digitIndex];
+          // Check if digit is locked (completed), if so skip randomization
+          if (box.classList.contains('completed')) {
+            requestAnimationFrame(animate);
+            return;
           }
+          box.textContent = randomDigit();
+          box.classList.add('highlight');
         }
         requestAnimationFrame(animate);
       } else {
-        // After animation is completeed update digits based on slider value
+        // After animation is completeed update digits based on slider value and remove highlight class
+        if (digitIndex >= 0 && digitIndex < digitBoxes.length) {
+          const box = digitBoxes[digitBoxes.length - 1 - digitIndex];
+          box.classList.remove('highlight');
+
+          // Increment randomize count and check limit
+          randomizeCounts[digitBoxes.length - 1 - digitIndex]++;
+          if (randomizeCounts[digitBoxes.length - 1 - digitIndex] >= randomizeLimit) {
+            box.classList.add('completed');
+          }
+        }
         updateDigits(value);
+
+        // If all digits completed, move save button to top and enlarge
+        if (allDigitsCompleted()) {
+          saveBtnContainer.classList.add('top');
+        }
       }
     }
 
@@ -71,37 +101,25 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
   });
 
-  // Add event listener to slider mouseup - animate digits randomization and smoothly reset slider to 0
+  // Add event listener to slider mouseup - animate digits randomization and instantly reset slider to 0
   slider.addEventListener('mouseup', (event) => {
     const value = parseInt(event.target.value, 10);
-    animateRandomization(value);
-
-    // Smoothly animate slider value back to 0
-    const startValue = value;
-    const duration = 300; // REMINDER animation duration in ms not s
-    const startTime = performance.now();
-
-    function animateSlider(time) {
-      const elapsed = time - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const currentValue = startValue - progress * startValue;
-      slider.value = currentValue;
-
-      if (progress < 1) {
-        requestAnimationFrame(animateSlider);
-      } else {
-        slider.value = 0;
-      }
+    if (value === -10) {
+      // Faster animation duration for reset
+      animateRandomization(value, 100);
+    } else {
+      animateRandomization(value);
     }
 
-    requestAnimationFrame(animateSlider);
+    // Instantly reset slider value to 0
+    slider.value = 0;
   });
 
-  // Add event listener to save button to alert current phone number with custom message
-  const saveBtn = document.getElementById('saveBtn');
+  // Add event listener to save button to alert current phone number with custom message and reset digits after alert
   saveBtn.addEventListener('click', () => {
     const phoneNumber = digitBoxes.map(box => box.textContent).join('');
     alert('Congrats on gambling for your number: ' + phoneNumber);
+    resetDigits();
   });
 });
 

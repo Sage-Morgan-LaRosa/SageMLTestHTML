@@ -58,6 +58,34 @@ input {
   transition: box-shadow 0.3s ease;
 }
 
+.digit-box.highlight {
+  background-color: yellow !important;
+  color: black !important;
+  box-shadow: inset 0 0 15px #ff0, 0 0 15px #ff0;
+}
+
+.digit-box.completed {
+  background-color: green !important;
+  color: green !important;
+  box-shadow: inset 0 0 15px #0f0, 0 0 15px #0f0;
+}
+
+.save-button-container.top {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 100%;
+  text-align: center;
+}
+
+.save-button-container.top #saveBtn {
+  font-size: 3rem !important;
+  padding: 20px 60px !important;
+  box-shadow: 0 0 25px #28a745 !important;
+}
+
 /* Increase size of the slider */
 input[type="range"]#temp {
   width: 900px;
